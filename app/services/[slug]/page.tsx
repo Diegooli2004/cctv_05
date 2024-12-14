@@ -12,13 +12,19 @@ interface ServicePageProps {
   }
 }
 
+// Add this function to generate static params
+export function generateStaticParams() {
+  return Object.keys(services).map((slug) => ({
+    slug: slug
+  }))
+}
+
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const service = services[params.slug]
   
   if (!service) {
     return constructMetadata({})
   }
-
   return constructMetadata({
     title: `${service.title} - Professional CCTV Installation Services`,
     description: service.description,
@@ -29,11 +35,9 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
 export default function ServicePage({ params }: ServicePageProps) {
   const service = services[params.slug]
-
   if (!service) {
     notFound()
   }
-
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
