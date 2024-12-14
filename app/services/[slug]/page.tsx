@@ -12,10 +12,10 @@ interface ServicePageProps {
   }
 }
 
-// Add this function to generate static params
+// Generate static params for all service slugs
 export function generateStaticParams() {
   return Object.keys(services).map((slug) => ({
-    slug: slug
+    slug
   }))
 }
 
