@@ -12,7 +12,6 @@ interface BlogPostContentProps {
 }
 
 const BlogPostContent = ({ post }: BlogPostContentProps) => {
-  // Function to parse the markdown headings
   const renderContent = (content: string) => {
     const sections = content.split('\n\n').map((section, index) => {
       // Handle headings
@@ -43,11 +42,11 @@ const BlogPostContent = ({ post }: BlogPostContentProps) => {
         const rows = section.split('\n').filter(row => row.trim() !== '')
         return (
           <div key={index} className="my-6 w-full overflow-y-auto">
-            <table className="w-full">
+            <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b">
+                <tr className="m-0 border-t p-0 even:bg-muted">
                   {rows[0].split('|').map((cell, cellIndex) => (
-                    <th key={cellIndex} className="border px-4 py-2 text-left font-medium">
+                    <th key={cellIndex} className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
                       {cell.trim()}
                     </th>
                   ))}
@@ -55,9 +54,9 @@ const BlogPostContent = ({ post }: BlogPostContentProps) => {
               </thead>
               <tbody>
                 {rows.slice(2).map((row, rowIndex) => (
-                  <tr key={rowIndex} className="border-b">
+                  <tr key={rowIndex} className="m-0 border-t p-0 even:bg-muted">
                     {row.split('|').map((cell, cellIndex) => (
-                      <td key={cellIndex} className="border px-4 py-2">
+                      <td key={cellIndex} className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                         {cell.trim()}
                       </td>
                     ))}
@@ -70,7 +69,7 @@ const BlogPostContent = ({ post }: BlogPostContentProps) => {
       }
 
       // Regular paragraphs
-      return <p key={index} className="leading-7 text-muted-foreground mb-4 [&:not(:first-child)]:mt-6">{section}</p>
+      return <p key={index} className="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">{section}</p>
     })
 
     return sections
@@ -104,7 +103,7 @@ const BlogPostContent = ({ post }: BlogPostContentProps) => {
         />
       </div>
 
-      <div className="prose prose-lg max-w-none dark:prose-invert">
+      <div className="max-w-none">
         {renderContent(post.content)}
       </div>
     </article>
