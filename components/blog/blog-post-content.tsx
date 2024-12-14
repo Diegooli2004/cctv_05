@@ -1,3 +1,5 @@
+"use client"
+
 import { Calendar, Clock, Share2, ChevronUp } from "lucide-react"
 import { useEffect, useState } from "react"
 
