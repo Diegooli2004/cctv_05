@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss';
-
 const config: Config = {
   darkMode: ['class'],
   content: [
@@ -61,39 +60,6 @@ const config: Config = {
           '5': 'hsl(var(--chart-5))',
         },
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: 'none',
-            color: 'hsl(var(--foreground))',
-            h1: {
-              color: 'hsl(var(--foreground))',
-            },
-            h2: {
-              color: 'hsl(var(--foreground))',
-            },
-            h3: {
-              color: 'hsl(var(--foreground))',
-            },
-            strong: {
-              color: 'hsl(var(--foreground))',
-            },
-            a: {
-              color: 'hsl(var(--primary))',
-              '&:hover': {
-                color: 'hsl(var(--primary))',
-              },
-            },
-            code: {
-              color: 'hsl(var(--foreground))',
-            },
-            blockquote: {
-              color: 'hsl(var(--muted-foreground))',
-              borderLeftColor: 'hsl(var(--border))',
-            },
-          },
-        },
-      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -110,10 +76,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require('tailwindcss-animate'),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('tailwindcss-animate')],
 };
-
 export default config;
