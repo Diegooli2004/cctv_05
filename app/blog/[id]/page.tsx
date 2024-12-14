@@ -27,6 +27,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 }
 
+// Add this export to generate static paths
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    id: post.id.toString(),
+  }))
+}
+
 export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = blogPosts.find((p) => p.id.toString() === params.id)
 
