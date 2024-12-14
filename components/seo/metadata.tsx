@@ -4,7 +4,7 @@ interface MetadataProps {
   title?: string
   description?: string
   image?: string
-  type?: string
+  type?: "article" | "website" | "book" | "profile" | "music.song" | "music.album" | "music.playlist" | "music.radio_station" | "video.movie" | "video.episode" | "video.tv_show" | "video.other"
   robots?: string
 }
 
@@ -26,7 +26,7 @@ export function constructMetadata({
           url: image,
         },
       ],
-      type,
+      type, // Now constrained to specific allowed types
       siteName: "CCTV Installers Near Me",
     },
     twitter: {
