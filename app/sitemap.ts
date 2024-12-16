@@ -58,12 +58,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
       url: `${baseUrl}/faq`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -118,13 +112,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Blog posts pages
   const blogPostPages = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.id}`,
-    lastModified: new Date(post.date), // Use the post's date
+    lastModified: new Date(post.date),
     changeFrequency: 'monthly',
     priority: 0.6,
   })) as MetadataRoute.Sitemap
 
   // Category pages if you have them
-  const categories = [...new Set(blogPosts.map(post => post.category))]
+  const categories = Array.from(
+    new Set(blogPosts.map(post => post.category))
+  )
+  
   const categoryPages = categories.map((category) => ({
     url: `${baseUrl}/blog/category/${category.toLowerCase()}`,
     lastModified: new Date(),
