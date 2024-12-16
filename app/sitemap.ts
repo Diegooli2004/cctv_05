@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { blogPosts } from '@/data/blog-posts'
 
 const baseUrl = 'https://cctvinstallersnearme.com'
 
@@ -56,6 +57,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/cookie-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
   ] as MetadataRoute.Sitemap
 
   // Service pages
@@ -76,5 +107,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   ) as MetadataRoute.Sitemap
 
-  return [...staticPages, ...servicePages, ...locationServicePages]
+  // Location index pages
+  const locationPages = locations.map((location) => ({
+    url: `${baseUrl}/installers/${location.name}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  })) as MetadataRoute.Sitemap
+
+  // Blog posts pages
+  const blogPostPages = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.id}`,
+    lastModified: new Date(post.date), // Use the post's date
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  })) as MetadataRoute.Sitemap
+
+  // Category pages if you have them
+  const categories = [...new Set(blogPosts.map(post => post.category))]
+  const categoryPages = categories.map((category) => ({
+    url: `${baseUrl}/blog/category/${category.toLowerCase()}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  })) as MetadataRoute.Sitemap
+
+  return [
+    ...staticPages,
+    ...servicePages,
+    ...locationPages,
+    ...locationServicePages,
+    ...blogPostPages,
+    ...categoryPages,
+  ]
 }
