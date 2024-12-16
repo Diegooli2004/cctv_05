@@ -568,9 +568,7 @@ Smart CCTV systems represent the next evolution in home security, offering unpre
     id: 5,
     title: "CCTV Maintenance: Essential Tips for Longevity",
     excerpt: "Keep your CCTV system running efficiently with these essential maintenance tips and best practices.",
-    content: `# CCTV Maintenance: Essential Tips for Longevity
-
-# CCTV Maintenance: Essential Tips for Longevity (That Nobody Talks About)
+    content: `# CCTV Maintenance: Essential Tips for Longevity (That Nobody Talks About)
 
 Look, I get it. You've just dropped a decent chunk of change on a shiny new CCTV system, and the last thing you want to think about is maintenance. But here's the thing: I've seen too many people learn this lesson the hard way.
 
