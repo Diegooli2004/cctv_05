@@ -60,17 +60,17 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/terms" className="text-muted-foreground hover:underline">
+                <Link href="/legal/terms" className="text-muted-foreground hover:underline">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-muted-foreground hover:underline">
+                <Link href="/legal/privacy" className="text-muted-foreground hover:underline">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/cookie-policy" className="text-muted-foreground hover:underline">
+                <Link href="/legal/cookies" className="text-muted-foreground hover:underline">
                   Cookie Policy
                 </Link>
               </li>
