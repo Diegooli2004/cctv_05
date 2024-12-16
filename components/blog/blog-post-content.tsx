@@ -3,6 +3,7 @@
 import { Calendar, Clock, Share2, ChevronUp } from "lucide-react"
 import { useEffect, useState } from "react"
 import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 interface BlogPostContentProps {
   post: {
@@ -85,7 +86,28 @@ const BlogPostContent = ({ post }: BlogPostContentProps) => {
 
         {/* Content */}
         <div className="prose prose-lg dark:prose-invert max-w-none">
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+          <ReactMarkdown 
+            remarkPlugins={[remarkGfm]}
+            components={{
+              table: ({ node, ...props }) => (
+                <table className="border-collapse table-auto w-full" {...props} />
+              ),
+              thead: ({ node, ...props }) => (
+                <thead className="bg-muted/50" {...props} />
+              ),
+              tr: ({ node, ...props }) => (
+                <tr className="border-b border-border hover:bg-muted/30 transition-colors" {...props} />
+              ),
+              th: ({ node, ...props }) => (
+                <th className="p-4 text-left font-semibold" {...props} />
+              ),
+              td: ({ node, ...props }) => (
+                <td className="p-4 border-b border-border" {...props} />
+              ),
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
         </div>
 
         {/* Social Share */}
